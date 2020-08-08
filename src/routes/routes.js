@@ -2,30 +2,18 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import OrdersRoute from '../components/orders';
 import CustomersRoute from '../components/customers';
 import StatsRoute from '../components/statistics';
+import Header from '../components/header';
 
 export default () =>       
 <Router>
     <div>
-        <ul>
-            <li>
-                <Link to="/">Orders</Link>
-            </li>
-            <li>
-                <Link to="/customers">Customers</Link>
-            </li>
-            <li>
-                <Link to="/stats">Statistics</Link>
-            </li>
-        </ul>
-        <hr />
-
+        <Header />
         <Switch>
             <Route exact path="/">
                 <OrdersRoute />
