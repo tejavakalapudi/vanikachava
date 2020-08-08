@@ -1,5 +1,3 @@
 import React from 'react';
 
-export default () => (
-    <div>Customers</div>
-);
+export default () => <div>Customers</div>;
