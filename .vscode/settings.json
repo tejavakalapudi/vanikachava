@@ -4,23 +4,14 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": false,
   "window.zoomLevel": 1,
-  "workbench.colorTheme": "Atom One Dark",
-  "npm-intellisense.importES6": true,
-  "npm-intellisense.importQuotes": "'",
-  "npm-intellisense.importLinebreak": ";\r\n",
-  "npm-intellisense.importDeclarationType": "const",
-  "npm-intellisense.scanDevDependencies": true,
   "[javascript]": {
     "editor.formatOnSave": false
   },
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
   "terminal.integrated.shell.osx": "/bin/zsh",
-  "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
   "diffEditor.renderSideBySide": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.preferences.quoteStyle": "single",
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
