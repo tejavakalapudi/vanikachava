@@ -7,9 +7,11 @@ import './App.css';
 
 function App() {
   return (
-    <Provider store={configureStore()}>
-      <Routes />
-    </Provider>
+    <div className="container">
+      <Provider store={configureStore()}>
+        <Routes />
+      </Provider>
+    </div>
   );
 }
 
