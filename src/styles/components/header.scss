@@ -14,6 +14,16 @@
 .listStyle {
   padding: 0 !important;
   padding-left: 10px !important;
+  &.active {
+    border-left: 5px #ffb6c1 solid;
+    box-sizing: border-box;
+    padding-left: 5px !important;
+    background-color: rgba(0, 0, 0, 0.04);
+    .listText * {
+      font-weight: bold;
+      color: lightslategrey;
+    }
+  }
 }
 
 .listText {
@@ -21,11 +31,4 @@
   color: black;
   font-weight: 500;
   text-transform: capitalize;
-}
-
-.listStyle.active {
-  border-left: 5px #ffb6c1 solid;
-  box-sizing: border-box;
-  padding-left: 5px !important;
-  background-color: rgba(0, 0, 0, 0.04);
 }

@@ -10,7 +10,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 
-import '../css/index.css';
 import { useDispatch } from 'react-redux';
 import fetchLatestDataFromSheets from '../actions/sheets';
 
