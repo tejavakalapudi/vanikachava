@@ -4,6 +4,13 @@
   height: 100%;
   padding-top: 10px;
 }
+
+.toolbar {
+  box-shadow: 0 6px 2px -6px #b9a6a9fa;
+  display: flex;
+  justify-content: space-between;
+}
+
 .listStyle {
   padding: 0 !important;
   padding-left: 10px !important;

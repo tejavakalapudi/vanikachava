@@ -8,8 +8,8 @@ import Header from '../components/header';
 
 export default () => (
   <Router>
-    <div>
-      <Header />
+    <Header />
+    <div className="main-content">
       <Switch>
         <Route exact path="/" component={OrdersRoute} />
         <Route exact path="/orders" component={OrdersRoute} />

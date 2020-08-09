@@ -1,16 +1,23 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import RefreshIcon from '@material-ui/icons/Sync';
 import { Link } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+
 import '../css/index.css';
-// eslint-disable-next-line no-undef
+import { useDispatch } from 'react-redux';
+import fetchLatestDataFromSheets from '../actions/sheets';
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('orders');
+  const dispatch = useDispatch();
 
   const toggleDrawer = (event) => {
     if (event.type === 'keydown') {
@@ -21,6 +28,10 @@ export default function Menu() {
 
   const handleSelect = (x) => {
     setActive(x);
+  };
+
+  const refreshResults = () => {
+    dispatch(fetchLatestDataFromSheets());
   };
 
   const Links = () => (
@@ -50,11 +61,28 @@ export default function Menu() {
   );
   return (
     <div>
-      <DehazeIcon
-        onClick={() => {
-          toggleDrawer(true);
-        }}
-      />
+      <Toolbar className="toolbar">
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={() => {
+            toggleDrawer(true);
+          }}
+        >
+          <DehazeIcon />
+        </IconButton>
+
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="refresh"
+          onClick={refreshResults}
+        >
+          <RefreshIcon />
+        </IconButton>
+      </Toolbar>
+
       <Drawer
         classes={{ paper: 'menu' }}
         open={open}
