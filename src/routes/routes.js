@@ -11,13 +11,12 @@ export default () => (
     <div>
       <Header />
       <Switch>
-        <Route exact path="/">
-          <OrdersRoute />
-        </Route>
+        <Route exact path="/" component={OrdersRoute} />
+        <Route exact path="/orders" component={OrdersRoute} />
         <Route path="/customers">
           <CustomersRoute />
         </Route>
-        <Route path="/stats">
+        <Route path="/statistics">
           <StatsRoute />
         </Route>
       </Switch>

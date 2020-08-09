@@ -1,32 +1,80 @@
-import React from 'react';
+/* eslint-disable react/no-array-index-key */
+import React, { useState } from 'react';
+import DehazeIcon from '@material-ui/icons/Dehaze';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import '../css/index.css';
 import { useDispatch } from 'react-redux';
 import fetchLatestDataFromSheets from '../actions/sheets';
 
-export default () => {
+export default function Menu() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('orders');
+
+  const toggleDrawer = (event) => {
+    if (event.type === 'keydown') {
+      return;
+    }
+    setOpen(!open);
+  };
+
+  const handleSelect = (x) => {
+    setActive(x);
+  };
+
   const dispatch = useDispatch();
 
   const refreshResults = () => {
     dispatch(fetchLatestDataFromSheets());
   };
 
-  return (
-    <div>
-      <Button variant="contained" color="primary" onClick={refreshResults}>
-        Refresh
-      </Button>
-      <ul>
-        <li>
-          <Link to="/">Orders</Link>
-        </li>
-        <li>
-          <Link to="/customers">Customers</Link>
-        </li>
-        <li>
-          <Link to="/stats">Statistics</Link>
-        </li>
-      </ul>
+  const Links = () => (
+    <div
+      role="presentation"
+      onClick={() => {
+        toggleDrawer(false);
+      }}
+      onKeyDown={() => {
+        toggleDrawer(false);
+      }}
+    >
+      {['orders', 'customers', 'statistics'].map((text, index) => (
+        <List
+          key={index}
+          className={`listStyle ${text === active ? 'active' : ''}`}
+          onClick={() => {
+            handleSelect(text);
+          }}
+        >
+          <ListItem button component={Link} to={`/${text}`}>
+            <ListItemText primary={text} className="listText" />
+          </ListItem>
+        </List>
+      ))}
     </div>
   );
-};
+  return (
+    <div>
+      <DehazeIcon
+        onClick={() => {
+          toggleDrawer(true);
+        }}
+      />
+      <Drawer
+        classes={{ paper: 'menu' }}
+        open={open}
+        onClose={() => {
+          toggleDrawer(false);
+        }}
+        BackdropProps={{ invisible: true }}
+      >
+        {Links()}
+      </Drawer>
+    </div>
+  );
+}
+
+// export default menu;
