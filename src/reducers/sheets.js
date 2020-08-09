@@ -5,8 +5,10 @@ const defaultSheets = {
 
 export default (state = defaultSheets, action) => {
   switch (action.type) {
-    case 'STORE_ORDERS':
+    case 'SET_ORDERS':
       return { ...state, orders: action.payload };
+    case 'SET_CONTACTS':
+      return { ...state, contacts: action.payload };
     default:
       return state;
   }
