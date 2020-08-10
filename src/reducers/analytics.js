@@ -14,7 +14,7 @@ export default (state = defaultAnalytics, action) => {
       return { ...state, sale: action.payload };
     case 'SET_EXPENSE':
       return { ...state, expense: action.payload };
-    case 'SET_ORDERS':
+    case 'SET_ORDERS_NUM':
       return { ...state, orders: action.payload };
     case 'SET_CUSTOMERS':
       return { ...state, customers: action.payload };

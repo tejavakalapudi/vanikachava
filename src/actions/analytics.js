@@ -12,7 +12,7 @@ const recordExpenses = (payload) => ({
 });
 
 const recordOrders = (payload) => ({
-  type: 'SET_ORDERS',
+  type: 'SET_ORDERS_NUM',
   payload,
 });
 

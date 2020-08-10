@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import TableCell from '@material-ui/core/TableCell';
@@ -6,15 +6,18 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TableBody from '@material-ui/core/TableBody';
-import { useSelector } from 'react-redux';
-
-// make table cells dynamic for values
-// format table head text by replacing _ with empty space
-// Apply css to make header bold when compared to body
+import { useSelector, useDispatch } from 'react-redux';
+import fetchLatestDataFromSheets from '../actions/sheets';
 
 export default () => {
   const sheetsState = useSelector((state) => state.sheets);
   const sampleData = sheetsState.orders;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLatestDataFromSheets());
+  }, []);
+
   return (
     <div>
       {sampleData.length > 0 && (

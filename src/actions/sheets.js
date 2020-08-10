@@ -13,6 +13,7 @@ const setContacts = (payload) => ({
 });
 
 const fetchLatestDataFromSheets = () => async (dispatch) => {
+  await GoogleSheet.loadInfo();
   const spreadSheet = GoogleSheet.sheetsByIndex[0];
   const rows = await spreadSheet.getRows();
   const formattedRows = rows.map((x) => ({
