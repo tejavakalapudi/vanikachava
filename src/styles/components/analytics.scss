@@ -1,4 +1,49 @@
 .card-container {
     min-height: 250px;
-    min-width: 350px;
+    min-width: 320px;
+    
+    * {
+        font-family: 'Roboto' !important;
+    }
+    padding: 0 20px;
+}
+
+.card__row{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+
+    .key{
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #9ba7b6;
+        margin-top: 4px;
+    }
+    .value{
+        font-size: 26px;
+        font-weight: 400;
+        color:#565656;
+    }
+
+
+    &.difference{
+        &.red * {
+            color: #f32f01 !important;
+        }
+        &.green * {
+            color: #18b8be !important;
+        }
+    }
+}
+
+.card__heading{
+    color: #fda7b4 ;
+    text-transform: uppercase;
+    font-size: 18px !important;
+    margin-bottom: 20px !important;
+    margin-top: 10px !important;
+}
+.card__ruler{
+    border-top: 1px solid #9ba7b6;
 }

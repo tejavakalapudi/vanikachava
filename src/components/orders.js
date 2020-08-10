@@ -6,17 +6,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TableBody from '@material-ui/core/TableBody';
-import { useSelector, useDispatch } from 'react-redux';
-import fetchLatestDataFromSheets from '../actions/sheets';
+import { useSelector } from 'react-redux';
 
 export default () => {
   const sheetsState = useSelector((state) => state.sheets);
   const sampleData = sheetsState.orders;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchLatestDataFromSheets());
-  }, []);
 
   return (
     <div>
