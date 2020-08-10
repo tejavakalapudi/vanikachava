@@ -32,18 +32,12 @@
   font-weight: 500;
   text-transform: capitalize;
 }
-.containerStyle {
-  max-width: 65%;
-  margin: 50px 215px;
-  .MuiTableCell-head {
-    text-transform: capitalize;
-    font-weight: bold !important;
-    text-align: center;
-    color: #fda7b4
-  }
-}
-.MuiTableCell-body {
-  text-align: center !important;
+
+.MuiTableCell-head {
+  text-transform: capitalize;
+  font-weight: bold !important;
+  text-align: center;
+  color: #fda7b4 !important;
 }
 
 .icon{

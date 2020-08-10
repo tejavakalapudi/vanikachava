@@ -21,7 +21,7 @@ export default () => {
   return (
     <div>
       {sampleData.length > 0 && (
-        <TableContainer component={Paper} className="containerStyle">
+        <TableContainer component={Paper}>
           <Table className="tblStyle">
             <TableHead className="tblHeadStyle">
               <TableRow>

@@ -5,11 +5,12 @@ import OrdersRoute from '../components/orders';
 import CustomersRoute from '../components/customers';
 import StatsRoute from '../components/statistics';
 import Header from '../components/header';
+import Container from '@material-ui/core/Container';
 
 export default () => (
   <Router>
     <Header />
-    <div className="main-content">
+    <Container className="main-content">
       <Switch>
         <Route exact path="/" component={OrdersRoute} />
         <Route exact path="/orders" component={OrdersRoute} />
@@ -20,6 +21,6 @@ export default () => (
           <StatsRoute />
         </Route>
       </Switch>
-    </div>
+    </Container>
   </Router>
 );
