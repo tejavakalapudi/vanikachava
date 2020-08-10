@@ -37,6 +37,7 @@ const initAnalytics = (rows) => (dispatch) => {
     acc.inventory_costing + val.inventory_costing;
 
   const sale = {
+    total: rows.length > 1 ? rows.reduce(saleAccumulator) : rows[0].quote_price,
     current:
       currentMonthData.length > 1
         ? currentMonthData.reduce(saleAccumulator)
@@ -45,10 +46,13 @@ const initAnalytics = (rows) => (dispatch) => {
       prevMonthData.length > 1
         ? prevMonthData.reduce(saleAccumulator)
         : prevMonthData[0].quote_price,
-    total: rows.length > 1 ? rows.reduce(saleAccumulator) : rows[0].quote_price,
   };
 
   const expense = {
+    total:
+    rows.length > 1
+      ? rows.reduce(expenseAccumulator)
+      : rows[0].inventory_costing,
     current:
       currentMonthData.length > 1
         ? currentMonthData.reduce(expenseAccumulator)
@@ -57,16 +61,12 @@ const initAnalytics = (rows) => (dispatch) => {
       prevMonthData.length > 1
         ? prevMonthData.reduce(expenseAccumulator)
         : prevMonthData[0].inventory_costing,
-    total:
-      rows.length > 1
-        ? rows.reduce(expenseAccumulator)
-        : rows[0].inventory_costing,
   };
 
   const orders = {
+    total: rows.length,
     current: currentMonthData.length,
     previous: prevMonthData.length,
-    total: rows.length,
   };
 
   const pending = rows.filter((x) => x.status === 'pending');

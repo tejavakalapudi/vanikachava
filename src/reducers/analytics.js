@@ -1,4 +1,4 @@
-const initialState = { current: 0, previous: 0, total: 0 };
+const initialState = { total: 0, current: 0, previous: 0 };
 
 const defaultAnalytics = {
   sale: initialState,

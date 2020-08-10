@@ -10,7 +10,7 @@ import TableBody from '@material-ui/core/TableBody';
 export default ({ sampleData }) => {
   return (
     <>
-      <TableContainer component={Paper} className="containerStyle">
+      <TableContainer component={Paper}>
         <Table className="tblStyle">
           <TableHead className="tblHeadStyle">
             <TableRow>

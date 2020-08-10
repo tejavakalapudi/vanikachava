@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import RefreshIcon from '@material-ui/icons/Sync';
 import { Link } from 'react-router-dom';
@@ -24,6 +24,10 @@ export default function Menu() {
     }
     setOpen(!open);
   };
+
+  useEffect(() => {
+    dispatch(fetchLatestDataFromSheets());
+  }, []);
 
   const handleSelect = (x) => {
     setActive(x);
@@ -52,7 +56,7 @@ export default function Menu() {
           }}
         >
           <ListItem button component={Link} to={`/${text}`}>
-            <ListItemText primary={text} className="listText" />
+            <ListItemText primary={text} classes={{primary: 'listText'}} />
           </ListItem>
         </List>
       ))}
