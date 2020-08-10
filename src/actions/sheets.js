@@ -11,11 +11,18 @@ const setContacts = (payload) => ({
 });
 
 const fetchLatestDataFromSheets = () => async (dispatch) => {
-  const sheet = GoogleSheet.sheetsByIndex[0];
-  const rows = await sheet.getRows();
+  const spreadSheet = GoogleSheet.sheetsByIndex[0];
+  const rows = await spreadSheet.getRows();
 
   dispatch(setContacts(rows.map((x) => x.contact)));
-  dispatch(setOrdersInfo(rows));
+  dispatch(
+    setOrdersInfo(
+      rows.map((x) => {
+        const { _sheet, _rawData, _rowNumber, ...modifiedItem } = x;
+        return modifiedItem;
+      }),
+    ),
+  );
 };
 
 export default fetchLatestDataFromSheets;
