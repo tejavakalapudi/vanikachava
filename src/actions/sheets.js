@@ -13,9 +13,8 @@ const setContacts = (payload) => ({
 });
 
 const fetchLatestDataFromSheets = () => async (dispatch) => {
-  const sheet = GoogleSheet.sheetsByIndex[0];
-  const rows = await sheet.getRows();
-
+  const spreadSheet = GoogleSheet.sheetsByIndex[0];
+  const rows = await spreadSheet.getRows();
   const formattedRows = rows.map((x) => ({
     ...x,
     quote_price: parseInt(x.quote_price),
@@ -23,7 +22,14 @@ const fetchLatestDataFromSheets = () => async (dispatch) => {
   }));
 
   dispatch(setContacts(formattedRows.map((x) => x.contact)));
-  dispatch(setOrdersInfo(formattedRows));
+  dispatch(
+    setOrdersInfo(
+      formattedRows.map((x) => {
+        const { _sheet, _rawData, _rowNumber, ...modifiedItem } = x;
+        return modifiedItem;
+      }),
+    ),
+  );
   dispatch(initAnalytics(formattedRows));
 };
 
