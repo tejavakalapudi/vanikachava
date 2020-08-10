@@ -19,6 +19,6 @@ const config = {
 const doc = new GoogleSpreadsheet(SheetConstants.SHEET_ID);
 
 doc.useServiceAccountAuth(config);
-doc.loadInfo();
+// doc.loadInfo();
 
 export default doc;

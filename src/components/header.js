@@ -69,7 +69,7 @@ export default function Menu() {
             toggleDrawer(true);
           }}
         >
-          <DehazeIcon />
+          <DehazeIcon classes={{root: 'icon'}} />
         </IconButton>
 
         <IconButton
@@ -78,7 +78,7 @@ export default function Menu() {
           aria-label="refresh"
           onClick={refreshResults}
         >
-          <RefreshIcon />
+          <RefreshIcon  classes={{root: 'icon'}} />
         </IconButton>
       </Toolbar>
 

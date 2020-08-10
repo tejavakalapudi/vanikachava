@@ -1,4 +1,6 @@
+/* eslint-disable radix */
 import GoogleSheet from '../google-api/sheets';
+import initAnalytics from './analytics';
 
 const setOrdersInfo = (payload) => ({
   type: 'SET_ORDERS',
@@ -11,18 +13,25 @@ const setContacts = (payload) => ({
 });
 
 const fetchLatestDataFromSheets = () => async (dispatch) => {
+  await GoogleSheet.loadInfo();
   const spreadSheet = GoogleSheet.sheetsByIndex[0];
   const rows = await spreadSheet.getRows();
+  const formattedRows = rows.map((x) => ({
+    ...x,
+    quote_price: parseInt(x.quote_price),
+    inventory_costing: parseInt(x.inventory_costing),
+  }));
 
-  dispatch(setContacts(rows.map((x) => x.contact)));
+  dispatch(setContacts(formattedRows.map((x) => x.contact)));
   dispatch(
     setOrdersInfo(
-      rows.map((x) => {
+      formattedRows.map((x) => {
         const { _sheet, _rawData, _rowNumber, ...modifiedItem } = x;
         return modifiedItem;
       }),
     ),
   );
+  dispatch(initAnalytics(formattedRows));
 };
 
 export default fetchLatestDataFromSheets;

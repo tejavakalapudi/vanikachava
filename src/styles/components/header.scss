@@ -3,6 +3,7 @@
   max-height: 100%;
   height: 100%;
   padding-top: 10px;
+  background-color: #ffdfe3 !important;
 }
 
 .toolbar {
@@ -15,35 +16,36 @@
   padding: 0 !important;
   padding-left: 10px !important;
   &.active {
-    border-left: 5px #ffb6c1 solid;
+    border-left: 5px #1f1f1f solid;
     box-sizing: border-box;
     padding-left: 5px !important;
     background-color: rgba(0, 0, 0, 0.04);
     .listText * {
       font-weight: bold;
-      color: lightslategrey;
     }
   }
 }
 
 .listText {
   font-size: 20px;
-  color: black;
+  color: #1f1f1f;
   font-weight: 500;
   text-transform: capitalize;
 }
 .containerStyle {
   max-width: 65%;
   margin: 50px 215px;
-  .tblHeadStyle {
-    background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
-  }
   .MuiTableCell-head {
     text-transform: capitalize;
     font-weight: bold !important;
     text-align: center;
+    color: #fda7b4
   }
 }
 .MuiTableCell-body {
   text-align: center !important;
+}
+
+.icon{
+  color: #fda7b4;
 }
