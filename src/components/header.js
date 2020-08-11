@@ -9,13 +9,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import fetchLatestDataFromSheets from '../actions/sheets';
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('orders');
+  const {isBusy} = useSelector((state) => state.appState);
   const dispatch = useDispatch();
 
   const toggleDrawer = (event) => {
@@ -75,15 +77,22 @@ export default function Menu() {
         >
           <DehazeIcon classes={{root: 'icon'}} />
         </IconButton>
+        
+        <div>
+          
+          {isBusy && <CircularProgress size={20} classes={{root: 'progress_circle'}} color="inherit"/>}
 
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="refresh"
-          onClick={refreshResults}
-        >
-          <RefreshIcon  classes={{root: 'icon'}} />
-        </IconButton>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="refresh"
+            onClick={refreshResults}
+            disabled={isBusy}
+          >
+            <RefreshIcon  classes={{root: 'icon'}} />
+          </IconButton>
+        </div>
+
       </Toolbar>
 
       <Drawer
@@ -99,5 +108,3 @@ export default function Menu() {
     </div>
   );
 }
-
-// export default menu;

@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 const convertToInr = (num) => num.toLocaleString('en-IN');
-const CardRow = ({ item, difference }) => {
+const CardRow = ({ item, difference, showIcon }) => {
   const differenceClassName = difference
     ? `difference ${Math.sign(item[1]) === -1 ? 'red' : 'green'}`
     : '';
@@ -13,7 +13,7 @@ const CardRow = ({ item, difference }) => {
       </Typography>
       <Typography className="value">
         {convertToInr(item[1])}
-        <span> &#8377;</span>
+        {showIcon && <span> &#8377;</span>}
       </Typography>
     </div>
   );

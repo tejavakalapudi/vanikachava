@@ -40,6 +40,36 @@
   color: #fda7b4 !important;
 }
 
-.icon{
+.tblRow {
+  text-transform: capitalize;
+}
+
+.chip {
+  height: 25px !important;
+  font-weight: bold;
+  width: 100px;
+
+  &.paid {
+    background-color: #d4edda;
+    color: #1f5d2c;
+  }
+
+  &.pending {
+    background-color: #f8d7da;
+    color: #79252d;
+  }
+}
+.chip_wrapper {
+  padding: 0px !important;
+}
+
+.icon {
   color: #fda7b4;
+}
+
+.progress_circle {
+  display: inline;
+  margin-top: 14px;
+  position: absolute;
+  margin-left: -40px;
 }

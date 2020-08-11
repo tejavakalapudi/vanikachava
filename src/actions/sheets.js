@@ -1,6 +1,7 @@
 /* eslint-disable radix */
 import GoogleSheet from '../google-api/sheets';
 import initAnalytics from './analytics';
+import setAppState from './appState';
 
 const setOrdersInfo = (payload) => ({
   type: 'SET_ORDERS',
@@ -13,6 +14,9 @@ const setContacts = (payload) => ({
 });
 
 const fetchLatestDataFromSheets = () => async (dispatch) => {
+  
+  dispatch(setAppState(true));
+
   await GoogleSheet.loadInfo();
   const spreadSheet = GoogleSheet.sheetsByIndex[0];
   const rows = await spreadSheet.getRows();
@@ -36,6 +40,8 @@ const fetchLatestDataFromSheets = () => async (dispatch) => {
     ),
   );
   dispatch(initAnalytics(formattedRows));
+
+  dispatch(setAppState(false));
 };
 
 export default fetchLatestDataFromSheets;
