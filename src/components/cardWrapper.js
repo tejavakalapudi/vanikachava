@@ -24,7 +24,7 @@ const cardWrapper = ({ statistic, heading, showIcon, isPending }) => {
 
         { !isPending && 
           <CardRow
-            item={['difference', statistic.previous - statistic.current]}
+            item={['difference', statistic.current - statistic.previous]}
             difference
             showIcon={showIcon}
           />
