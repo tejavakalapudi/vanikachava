@@ -6,6 +6,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TableBody from '@material-ui/core/TableBody';
+import Chip from '@material-ui/core/Chip';
 
 export default ({ sampleData }) => {
   return (
@@ -20,11 +21,19 @@ export default ({ sampleData }) => {
             </TableRow>
           </TableHead>
           <TableBody>
+
             {sampleData.map((item, index) => (
               <TableRow key={index} className="tblRow">
-                {Object.values(item).map((data) => (
-                  <TableCell key={data}>{data}</TableCell>
-                ))}
+                {Object.values(item).map((data) => {
+                  if(data === "pending" || data === "paid"){
+                    return (
+                      <TableCell key={data} classes={{root: 'chip_wrapper'}}>
+                        <Chip label={`${data}`} classes={{root: 'chip'}} className={`${data}`}/>
+                      </TableCell>
+                    )
+                  }
+                  return <TableCell key={data}>{data}</TableCell>
+                })}
               </TableRow>
             ))}
           </TableBody>

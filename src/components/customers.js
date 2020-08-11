@@ -4,12 +4,10 @@ import DynamicTable from './dynamicTable';
 
 export default () => {
   const sheetsState = useSelector((state) => state.sheets);
-  console.log(`~~~~~~~~${sheetsState}`);
-  const sampleData = sheetsState.contacts;
-  console.log(`~~${sampleData}`);
+  const { contacts } = sheetsState;
   return (
     <div>
-      {sampleData.length > 0 && <DynamicTable sampleData={sampleData} />}
+      {contacts.length > 0 && <DynamicTable sampleData={contacts} />}
     </div>
   );
 };
