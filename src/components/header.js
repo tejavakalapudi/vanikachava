@@ -87,6 +87,7 @@ export default function Menu() {
             color="inherit"
             aria-label="refresh"
             onClick={refreshResults}
+            disabled={isBusy}
           >
             <RefreshIcon  classes={{root: 'icon'}} />
           </IconButton>
