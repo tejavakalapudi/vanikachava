@@ -22,7 +22,11 @@ const fetchLatestDataFromSheets = () => async (dispatch) => {
     inventory_costing: parseInt(x.inventory_costing),
   }));
 
-  dispatch(setContacts(formattedRows.map((x) => x.contact)));
+  dispatch(
+    setContacts(
+      formattedRows.map((x) => ({ name: x.name, contact: x.contact })),
+    ),
+  );
   dispatch(
     setOrdersInfo(
       formattedRows.map((x) => {
