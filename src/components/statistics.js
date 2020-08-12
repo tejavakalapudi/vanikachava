@@ -32,22 +32,6 @@ export default () => {
       {/* Pending Card */}
       <CardWrapper statistic={pending} heading="Pending" isPending />
 
-      <Card className="card-container">
-        <CardContent>
-          <Typography color="textSecondary" gutterBottom>
-            Word of the Day
-          </Typography>
-          <Typography variant="h5" component="h2">
-            be*nev*o*lent
-          </Typography>
-          <Typography color="textSecondary">adjective</Typography>
-          <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            "a benevolent smile"
-          </Typography>
-        </CardContent>
-      </Card>
     </Box>
   );
 };

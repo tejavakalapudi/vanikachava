@@ -6,6 +6,5 @@ import DynamicTable from './dynamicTable';
 export default () => {
   const sheetsState = useSelector((state) => state.sheets);
   const { orders } = sheetsState;
-  console.log(orders);
   return <div>{orders.length > 0 && <DynamicTable sampleData={orders} />}</div>;
 };

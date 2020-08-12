@@ -14,7 +14,7 @@ const setContacts = (payload) => ({
 });
 
 const fetchLatestDataFromSheets = () => async (dispatch) => {
-  // dispatch(setAppState(true));
+  dispatch(setAppState(true));
 
   await GoogleSheet.loadInfo();
   const spreadSheet = GoogleSheet.sheetsByIndex[0];
