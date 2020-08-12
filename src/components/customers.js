@@ -6,8 +6,6 @@ export default () => {
   const sheetsState = useSelector((state) => state.sheets);
   const { contacts } = sheetsState;
   return (
-    <div>
-      {contacts.length > 0 && <DynamicTable sampleData={contacts} />}
-    </div>
+    <div>{contacts.length > 0 && <DynamicTable sampleData={contacts} />}</div>
   );
 };

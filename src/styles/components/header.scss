@@ -73,3 +73,10 @@
   position: absolute;
   margin-left: -40px;
 }
+.MuiDialog-paperWidthSm {
+  max-width: 730px !important;
+  #simple-dialog-title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}

@@ -21,18 +21,21 @@ export default ({ sampleData }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-
             {sampleData.map((item, index) => (
               <TableRow key={index} className="tblRow">
                 {Object.values(item).map((data) => {
-                  if(data === "pending" || data === "paid"){
+                  if (data === 'pending' || data === 'paid') {
                     return (
-                      <TableCell key={data} classes={{root: 'chip_wrapper'}}>
-                        <Chip label={`${data}`} classes={{root: 'chip'}} className={`${data}`}/>
+                      <TableCell key={data} classes={{ root: 'chip_wrapper' }}>
+                        <Chip
+                          label={`${data}`}
+                          classes={{ root: 'chip' }}
+                          className={`${data}`}
+                        />
                       </TableCell>
-                    )
+                    );
                   }
-                  return <TableCell key={data}>{data}</TableCell>
+                  return <TableCell key={data}>{data}</TableCell>;
                 })}
               </TableRow>
             ))}

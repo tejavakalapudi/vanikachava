@@ -10,7 +10,7 @@ export default () => {
   const analyticsState = useSelector((state) => state.analytics);
   const { sale, expense, orders, pending } = analyticsState;
   const profits = {};
-  for (const key in sale){
+  for (const key in sale) {
     profits[key] = sale[key] - expense[key];
   }
 
@@ -22,15 +22,15 @@ export default () => {
       justifyContent="space-between"
     >
       {/* Sales Card */}
-      <CardWrapper statistic={ sale } heading="Sale"/>
+      <CardWrapper statistic={sale} heading="Sale" />
       {/* Expenses Card */}
-      <CardWrapper statistic={ expense } heading="Expense"/>
+      <CardWrapper statistic={expense} heading="Expense" />
       {/* Profits Card : Sale - Expense */}
-      <CardWrapper statistic={ profits } heading="Profits"/>
+      <CardWrapper statistic={profits} heading="Profits" />
       {/* Orders Card */}
-      <CardWrapper statistic={ orders } heading="Orders" showIcon={false}/>
+      <CardWrapper statistic={orders} heading="Orders" showIcon={false} />
       {/* Pending Card */}
-      <CardWrapper statistic={ pending } heading="Pending" isPending/>
+      <CardWrapper statistic={pending} heading="Pending" isPending />
 
       <Card className="card-container">
         <CardContent>
