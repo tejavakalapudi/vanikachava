@@ -32,35 +32,34 @@ const initAnalytics = (rows) => (dispatch) => {
     moment(x.date, 'DD/MM/YYYY').isSame(startingDayOfPrevMonth, 'month'),
   );
 
-  const saleAccumulator = (acc, val) => acc.quote_price + val.quote_price;
-  const expenseAccumulator = (acc, val) =>
-    acc.inventory_costing + val.inventory_costing;
+  const saleAccumulator = (acc, val) => acc + val.quote_price;
+  const expenseAccumulator = (acc, val) => acc + val.inventory_costing;
 
   const sale = {
-    total: rows.length > 1 ? rows.reduce(saleAccumulator) : rows[0].quote_price,
+    total: rows.length > 1 ? rows.reduce(saleAccumulator, 0) : rows[0].quote_price,
     current:
       currentMonthData.length > 1
-        ? currentMonthData.reduce(saleAccumulator)
+        ? currentMonthData.reduce(saleAccumulator, 0)
         : currentMonthData[0].quote_price,
-    previous:
+    previous:prevMonthData.length > 0 ? 
       prevMonthData.length > 1
-        ? prevMonthData.reduce(saleAccumulator)
-        : prevMonthData[0].quote_price,
+        ? prevMonthData.reduce(saleAccumulator, 0)
+        : prevMonthData[0].quote_price : 0,
   };
 
   const expense = {
     total:
     rows.length > 1
-      ? rows.reduce(expenseAccumulator)
+      ? rows.reduce(expenseAccumulator, 0)
       : rows[0].inventory_costing,
     current:
       currentMonthData.length > 1
-        ? currentMonthData.reduce(expenseAccumulator)
+        ? currentMonthData.reduce(expenseAccumulator, 0)
         : currentMonthData[0].inventory_costing,
-    previous:
+    previous:prevMonthData.length > 0 ? 
       prevMonthData.length > 1
-        ? prevMonthData.reduce(expenseAccumulator)
-        : prevMonthData[0].inventory_costing,
+        ? prevMonthData.reduce(expenseAccumulator, 0)
+        : prevMonthData[0].inventory_costing : 0,
   };
 
   const orders = {
